@@ -1,4 +1,4 @@
-# AppDevToolbox
+# AppDevToolkit
 
 A collection of tools for Android app development in one place.
 
@@ -7,22 +7,22 @@ A collection of tools for Android app development in one place.
 <table border="0">
 <tr>
 <td>
-<img src="https://github.com/andyb129/AppDevToolbox/blob/master/screenshots/appdevtoolbox_screen_1.png" alt="App Dev Toolbox Screen 1"/>
+<img src="https://github.com/andyb129/AppDevToolkit/blob/master/screenshots/appdevtoolkit_screen_1.png" alt="App Dev Toolkit Screen 1"/>
 </td>
 <td>
-<img src="https://github.com/andyb129/AppDevToolbox/blob/master/screenshots/appdevtoolbox_screen_2.png" alt="App Dev Toolbox Screen 2"/>
+<img src="https://github.com/andyb129/AppDevToolkit/blob/master/screenshots/appdevtoolkit_screen_2.png" alt="App Dev Toolkit Screen 2"/>
 </td>
 <td>
-<img src="https://github.com/andyb129/AppDevToolbox/blob/master/screenshots/appdevtoolbox_screen_3.png" alt="App Dev Toolbox Screen 3"/>
+<img src="https://github.com/andyb129/AppDevToolkit/blob/master/screenshots/appdevtoolkit_screen_3.png" alt="App Dev Toolkit Screen 3"/>
 </td>
 <td>
-<img src="https://github.com/andyb129/AppDevToolbox/blob/master/screenshots/appdevtoolbox_screen_4.png" alt="App Dev Toolbox Screen 4"/>
+<img src="https://github.com/andyb129/AppDevToolkit/blob/master/screenshots/appdevtoolkit_screen_4.png" alt="App Dev Toolkit Screen 4"/>
 </td>
 <td>
-<img src="https://github.com/andyb129/AppDevToolbox/blob/master/screenshots/appdevtoolbox_screen_6.png" alt="App Dev Toolbox Screen 5"/>
+<img src="https://github.com/andyb129/AppDevToolkit/blob/master/screenshots/appdevtoolkit_screen_6.png" alt="App Dev Toolkit Screen 5"/>
 </td>
 <td>
-<img src="https://github.com/andyb129/AppDevToolbox/blob/master/screenshots/appdevtoolbox_screen_5.png" alt="App Dev Toolbox Screen 6"/>
+<img src="https://github.com/andyb129/AppDevToolkit/blob/master/screenshots/appdevtoolkit_screen_5.png" alt="App Dev Toolkit Screen 6"/>
 </td>
 </tr>
 </table>

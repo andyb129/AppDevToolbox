@@ -4,6 +4,10 @@ A collection of tools for Android app development in one place.
 
 :construction_worker: :hammer: NOTE: This is still a work in progress :hammer: :construction_worker:
 
+<p>
+<a href="https://play.google.com/store/apps/details?id=uk.co.barbuzz.appdevtoolbox"><img src="https://github.com/andyb129/AppDevToolkit/blob/master/screenshots/google_play_badge.png" height="80" width="210" alt="AppDevToolkit"/></a>
+</p>
+
 <table border="0">
 <tr>
 <td>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ef6c00</color>
+    <color name="colorPrimaryDark">#b53d00</color>
+    <color name="colorAccent">#1976d2</color>
+    <color name="buttonLabel">#FFFFFF</color>
+
+    <color name="intro_background">#979797</color>
+
+    <color name="pressed_color">#DEDEDE</color>
+    <color name="selected_color">#DEDEDE</color>
+    <color name="focused_color">#979797</color>
+
+    <color name="green">#007D00</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#ffffff</color>
+</resources>

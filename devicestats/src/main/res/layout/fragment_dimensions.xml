@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!--<ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/mobiles_colour_small_fade"/>-->
+
+    <ImageView
+        android:id="@+id/vert_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/arrow_two_head_vert" />
+
+    <ImageView
+        android:id="@+id/horiz_arrow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/arrow_two_head_horiz" />
+
+    <TextView
+        android:id="@+id/horizontal_label"
+        style="@style/ViewSizeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/horiz_arrow"
+        android:layout_centerHorizontal="true"
+        android:text="@string/view_width" />
+
+    <TextView
+        android:id="@+id/vertical_label"
+        style="@style/ViewSizeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@+id/vert_arrow"
+        android:text="@string/view_height" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/vertical_label"
+        android:layout_marginLeft="20dp">
+		<RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+        <TextView
+            android:id="@+id/model"
+            style="@style/DeviceInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Model"
+            android:textSize="@dimen/text_screenclass" />
+
+        <TextView
+            android:id="@+id/screenClass"
+            style="@style/DeviceInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/model"
+            android:text="@string/size_qualifier"
+            android:textSize="@dimen/text_screenclass" />
+
+        <TextView
+            android:id="@+id/dpiClass"
+            style="@style/DeviceInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/screenClass"
+            android:text="@string/dpi_qualifier"
+            android:textSize="@dimen/text_dpi_class" />
+
+        <TextView
+            android:id="@+id/widthClass"
+            style="@style/DeviceInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dpiClass"
+            android:text="@string/screen_width_class"
+            android:textSize="@dimen/text_dpi_class" />
+
+        <TextView
+            android:id="@+id/screenDimensionsDips"
+            style="@style/DeviceInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/widthClass"
+            android:text="@string/screen_dimensions_pixels"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/screenDimensionsPixels"
+            style="@style/DeviceInfoText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/screenDimensionsDips"
+            android:text="@string/screen_dimensions_dips"
+            android:textAppearance="@android:style/TextAppearance.Large" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

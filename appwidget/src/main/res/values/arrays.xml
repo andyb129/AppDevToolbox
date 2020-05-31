@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+  <string-array name="pref_sorting_entries" translatable="false">
+    <item>@string/pref_entry_sorting_order_added</item>
+    <item>@string/pref_entry_sorting_alphabetically_packages</item>
+    <item>@string/pref_entry_sorting_alphabetically_names</item>
+  </string-array>
+
+  <string-array name="pref_sorting_values" translatable="false">
+    <item>@string/pref_value_sorting_order_added</item>
+    <item>@string/pref_value_sorting_alphabetically_packages</item>
+    <item>@string/pref_value_sorting_alphabetically_names</item>
+  </string-array>
+
+    <string-array name="pref_night_mode_entries" translatable="false" tools:ignore="InconsistentArrays">
+    <item>@string/pref_entry_night_mode_off</item>
+    <item>@string/pref_entry_night_mode_on</item>
+    <item>@string/pref_entry_night_mode_battery</item>
+  </string-array>
+
+    <string-array name="pref_night_mode_values" translatable="false" tools:ignore="InconsistentArrays">
+    <item>@string/pref_value_night_mode_off</item>
+    <item>@string/pref_value_night_mode_on</item>
+    <item>@string/pref_value_night_mode_battery</item>
+  </string-array>
+
+  <string-array name="pref_background_opacity_display_names">
+    <item>@string/pref_entry_opacity_fully_transparent</item>
+    <item>@string/pref_entry_opacity_10</item>
+    <item>@string/pref_entry_opacity_25</item>
+    <item>@string/pref_entry_opacity_50</item>
+    <item>@string/pref_entry_opacity_75</item>
+    <item>@string/pref_entry_opacity_fully_opaque</item>
+  </string-array>
+  <string-array name="pref_background_opacity_values" translatable="false">
+    <item>@string/pref_value_opacity_fully_transparent</item>
+    <item>@string/pref_value_opacity_10</item>
+    <item>@string/pref_value_opacity_25</item>
+    <item>@string/pref_value_opacity_50</item>
+    <item>@string/pref_value_opacity_75</item>
+    <item>@string/pref_value_opacity_fully_opaque</item>
+  </string-array>
+
+    <string-array name="pref_click_behavior_entries" translatable="false">
+        <item>@string/pref_entry_click_behavior_launcher</item>
+        <item>@string/pref_entry_click_behavior_exported</item>
+    </string-array>
+
+    <string-array name="pref_click_behavior_values" translatable="false">
+        <item>@string/pref_value_click_behavior_launcher</item>
+        <item>@string/pref_value_click_behavior_exported</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.devicestats.android.MainActivity">
+    <item
+        android:id="@+id/menu_save_to_sd"
+        android:title="@string/menu_save_to_sd"/>
+    <!-- TODO - fix wallpaper function -->
+    <item
+        android:id="@+id/menu_screenshot"
+        android:visible="false"
+        android:title="@string/menu_screenshot"/>
+</menu>

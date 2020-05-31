@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">App Dev Toolkit</string>
+    <string name="title_device_stats">Device Stats</string>
+    <string name="title_keylines">Keylines</string>
+    <string name="title_snippet">Snippet</string>
+    <string name="title_dev_tiles_and_widget">Other tools</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="overlay_setting_title">Enable app to show an overlay</string>
+    <string name="overlay_setting_desc">The app needs to set a permission to show an overlay box to paste the text and show keylines</string>
+    <string name="accessibility_setting_title">Enable App Dev Toolkit as a Accessibility Service</string>
+    <string name="accessibility_setting_desc">The app also needs to enable App Dev Toolkit as a Accessibility Service so it can read your abbreviations just in text views</string>
+    <string name="overlay_setting_enabled_title">Overlay permission</string>
+    <string name="accessibility_setting_enabled_title">Accessibility Service enabled</string>
+
+    <string name="overlay_setting_button">Go to overlay settings</string>
+    <string name="accessibility_setting_button">Go to accessibility settings</string>
+    <string name="complete_setting_button">Go to app</string>
+    <string name="permission_success_message">Thanks! App is all setup and ready to use.</string>
+</resources>

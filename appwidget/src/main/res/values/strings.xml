@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="long_press_homescreen_to_add_app_widget_text">Long press homescreen to add App widget</string>
+    <string name="stop_venom_button">Stop Venom</string>
+    <string name="start_venom_button">Start Venom</string>
+    <string name="venom_process_death_notification_trigger_text">Venom - process death notification trigger</string>
+</resources>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">DeviceStats</string>
+
+    <string name="label_screen_size">Screen Size: </string>
+    <string name="menu_share">Share Stats</string>
+    <string name="menu_save_to_sd">Save to SD card</string>
+    <string name="about_version">version %1$s [%2$d]</string>
+
+    <string name="view_width">%1$ddp (%2$dpx)</string>
+    <string name="view_height">%1$ddp\n(%2$dpx)</string>
+    <string name="screen_dimensions_dips">%1$d x %2$d dp</string>
+    <string name="screen_dimensions_pixels">%1$d x %2$d px</string>
+    <string name="dpi_string">(x,y): (%1$d,%2$d) dpi</string>
+    <string name="menu_screenshot">Add device dimensions as wallpaper</string>
+    <string name="setting_device_stats_wallpaper">Setting Device Stats Wallpaper</string>
+
+</resources>

@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">Material Keylines</string>
+
+    <string name="keyline_grid_label">Keyline grid</string>
+
+    <!-- Notification -->
+    <string name="active_overlay_grid">Active overlay - Grid</string>
+    <string name="active_overlay_dplines_horiz">Active overlay - DpLines horizontal</string>
+    <string name="active_overlay_dplines_vert">Active overlay - DpLines vertical</string>
+    <string name="active_overlay_ruler_horiz">Active overlay - Ruler horizontal</string>
+    <string name="active_overlay_ruler_vert">Active overlay - Ruler vertical</string>
+
+    <!-- Preference categories -->
+    <string name="pref_title_baseline_grid">Baseline grid</string>
+    <string name="pref_title_typography_lines">Typography lines</string>
+    <string name="pref_title_increment_grid">Increment grid</string>
+    <string name="pref_title_content_keylines">Content keylines</string>
+    <string name="pref_title_advanced">Advanced</string>
+
+
+    <!-- Enabled keylines preference -->
+    <string name="pref_title_enabled">Enabled</string>
+    <string translatable="false" name="pref_key_baseline_grid_enabled">baseline_grid_enabled</string>
+    <string translatable="false" name="pref_key_typography_lines_enabled">typography_lines_enabled</string>
+    <string translatable="false" name="pref_key_increment_grid_enabled">increment_grid_enabled</string>
+    <string translatable="false" name="pref_key_content_keylines_enabled">content_keylines_enabled</string>
+
+
+    <!-- Opacity preference -->
+    <string name="pref_title_opacity">Opacity</string>
+    <string-array name="pref_names_opacity">
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+    <string translatable="false" name="pref_value_opacity_default">100</string>
+    <string-array translatable="false" name="pref_values_opacity">
+        <item>25</item>
+        <item>50</item>
+        <item>75</item>
+        <item>100</item>
+    </string-array>
+    <string translatable="false" name="pref_key_baseline_grid_opacity">baseline_grid_opacity</string>
+    <string translatable="false" name="pref_key_typography_lines_opacity">typography_lines_opacity</string>
+    <string translatable="false" name="pref_key_increment_grid_opacity">increment_grid_opacity</string>
+    <string translatable="false" name="pref_key_content_keylines_opacity">content_keylines_opacity</string>
+
+
+    <!-- Color preference -->
+    <string name="pref_title_color">Color</string>
+    <string-array name="pref_names_color">
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Orange</item>
+    </string-array>
+    <string translatable="false" name="pref_key_baseline_grid_color">baseline_grid_color</string>
+    <string translatable="false" name="pref_key_typography_lines_color">typography_lines_color</string>
+    <string translatable="false" name="pref_key_increment_grid_color">increment_grid_color</string>
+    <string translatable="false" name="pref_key_content_keylines_color">content_keylines_color</string>
+
+
+    <!-- Size preference -->
+    <string name="pref_title_size">Size</string>
+    <string translatable="false" name="pref_value_size_small">1</string>
+    <string translatable="false" name="pref_value_size_medium">2</string>
+    <string translatable="false" name="pref_value_size_large">3</string>
+    <string translatable="false" name="pref_value_size_xlarge">5</string>
+    <string name="pref_name_size_small">Small</string>
+    <string name="pref_name_size_medium">Medium</string>
+    <string name="pref_name_size_large">Large</string>
+    <string name="pref_name_size_xlarge">Extra large</string>
+    <integer-array translatable="false" name="pref_values_size_small">
+        <item>@string/pref_value_size_small</item>
+        <item>@string/pref_value_size_medium</item>
+    </integer-array>
+    <string-array name="pref_names_size_small">
+        <item>@string/pref_name_size_small</item>
+        <item>@string/pref_name_size_medium</item>
+    </string-array>
+    <integer-array translatable="false" name="pref_values_size_all">
+        <item>@string/pref_value_size_small</item>
+        <item>@string/pref_value_size_medium</item>
+        <item>@string/pref_value_size_large</item>
+        <item>@string/pref_value_size_xlarge</item>
+    </integer-array>
+    <string-array name="pref_names_size_all">
+        <item>@string/pref_name_size_small</item>
+        <item>@string/pref_name_size_medium</item>
+        <item>@string/pref_name_size_large</item>
+        <item>@string/pref_name_size_xlarge</item>
+    </string-array>
+    <string translatable="false" name="pref_key_baseline_grid_size">baseline_grid_size</string>
+    <string translatable="false" name="pref_key_typography_lines_size">typography_lines_size</string>
+    <string translatable="false" name="pref_key_increment_grid_size">increment_grid_size</string>
+    <string translatable="false" name="pref_key_content_keylines_size">content_keylines_size</string>
+
+
+    <!-- Increment size preference -->
+    <string name="pref_title_increment_size">Increment</string>
+    <string translatable="false" name="pref_value_increment_size_auto">0</string>
+    <string translatable="false" name="pref_value_increment_size_small">48</string>
+    <string translatable="false" name="pref_value_increment_size_medium">56</string>
+    <string translatable="false" name="pref_value_increment_size_large">64</string>
+    <integer-array translatable="false" name="pref_values_increment_size">
+        <item>@string/pref_value_increment_size_auto</item>
+        <item>@string/pref_value_increment_size_small</item>
+        <item>@string/pref_value_increment_size_medium</item>
+        <item>@string/pref_value_increment_size_large</item>
+    </integer-array>
+    <string-array name="pref_names_increment_size">
+        <item>Automatic</item>
+        <item>48dp (phone, landscape)</item>
+        <item>56dp (phone, portrait)</item>
+        <item>64dp (tablet)</item>
+    </string-array>
+    <string translatable="false" name="pref_key_increment_grid_increment_size">increment_grid_increment_size</string>
+    <string name="ruler_horiz_label">Ruler horizontal</string>
+    <string name="ruler_vert_label">Ruler vertical</string>
+    <string name="dplines_horiz_label">Dp Lines horizontal</string>
+    <string name="dplines_vert_label">Dp Lines vertical</string>
+
+</resources>

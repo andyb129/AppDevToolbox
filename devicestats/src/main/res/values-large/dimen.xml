@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_screenclass">64sp</dimen>
+    <dimen name="text_dpi_class">56sp</dimen>
+    
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".ConfigureActivity"
+    tools:showIn="@layout/configure_activity">
+
+    <AutoCompleteTextView
+        android:id="@+id/configureNewPackageMatcher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/keyline_1_minus_4dp"
+        android:layout_marginStart="@dimen/keyline_1_minus_4dp"
+        android:hint="@string/configure_hint_package_matcher"
+        android:imeActionLabel="@string/configure_action_add"
+        android:imeOptions="actionDone"
+        android:inputType="textUri" />
+
+    <TextView
+        android:id="@+id/privateConfigureListHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/keyline_1"
+        android:layout_marginStart="@dimen/keyline_1"
+        android:layout_marginTop="@dimen/default_gap"
+        android:text="@string/configure_package_matchers_title"
+        android:textAppearance="@android:style/TextAppearance.Material.Body2"
+        android:textColor="?colorAccent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/configurePackageMatcherList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/half_gap"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+</LinearLayout>

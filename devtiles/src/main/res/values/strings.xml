@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Dev Tiles</string>
+
+    <!-- Tile labels -->
+    <string name="label_toggle_usb_debugging">USB Debugging</string>
+    <string name="label_keep_screen_on">Keep screen on</string>
+    <string name="label_toggle_show_touches">Show taps</string>
+    <string name="label_toggle_demo_mode">Demo mode</string>
+    <string name="label_toggle_animator_duration_scale">Toggle animator duration scale</string>
+    <string name="label_toggle_all_animations">Toggle all animations</string>
+    <string name="label_toggle_keep_activities">Toggle keep activities</string>
+
+    <string name="animation_off">Animation off</string>
+    <string name="animation_scale_0_5x">Animation scale .5x</string>
+    <string name="animation_scale_1x">Animation scale 1x</string>
+    <string name="animation_scale_1_5x">Animation scale 1.5x</string>
+    <string name="animation_scale_2x">Animation scale 2x</string>
+    <string name="animation_scale_5x">Animation scale 5x</string>
+    <string name="animation_scale_10x">Animation scale 10x</string>
+
+    <string name="permission_required_toast">Need to grant permission</string>
+
+    <!-- Animator duration picker -->
+    <string name="dialog_animator_duration_title">Animator duration scale</string>
+
+    <!-- Home screen -->
+    <string name="grant_permission">Grant Permissions</string>
+    <string name="permission_command">adb shell pm grant uk.co.barbuzz.appdevtoolbox android.permission.WRITE_SECURE_SETTINGS\n\nadb shell pm grant uk.co.barbuzz.appdevtoolbox android.permission.DUMP</string>
+    <string name="btn_label_share">Share \ncommands</string>
+
+    <string name="features_title">Available Tiles</string>
+
+    <string name="menu_share_app">Share</string>
+    <string name="msg_share_app">Check out Dev Tiles on Google Play – https://play.google.com/store/apps/details?id=xyz.mustafaali.devqstiles</string>
+    <string name="menu_licenses">Licenses</string>
+    <string name="menu_rate_app">Rate</string>
+    <string name="menu_request_feature">Request feature</string>
+
+    <!-- keep activities-->
+    <string name="keep_activities_yes">Keep activities</string>
+    <string name="keep_activities_no">Don\'t keep activities</string>
+
+    <!-- select language -->
+    <string name="language_header">Language</string>
+    <string name="no_languages_to_display">No languages to display</string>
+    <string name="add_some_languages">Add some languages!</string>
+</resources>

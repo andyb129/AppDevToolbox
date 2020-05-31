@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_device_stats">
+
+    <fragment
+        android:id="@+id/navigation_device_stats"
+        android:name="uk.co.barbuzz.devicestats.DeviceStatsFragment"
+        android:label="@string/title_device_stats"
+        tools:layout="@layout/fragment_device_stats" />
+
+    <fragment
+        android:id="@+id/navigation_keylines"
+        android:name="uk.co.barbuzz.keylines.ui.KeylineFragment"
+        android:label="@string/title_keylines"
+        tools:layout="@layout/fragment_keylines" />
+
+    <fragment
+        android:id="@+id/navigation_app_widget"
+        android:name="uk.co.barbuzz.snippet.ui.SnippetFragment"
+        android:label="@string/title_snippet"
+        tools:layout="@layout/fragment_snippet" />
+
+    <fragment
+        android:id="@+id/navigation_dev_tiles"
+        android:name="uk.co.barbuzz.appdevtoolbox.TilesWidgetFragment"
+        android:label="@string/title_dev_tiles_and_widget"
+        tools:layout="@layout/fragment_tiles_widget" />
+</navigation>

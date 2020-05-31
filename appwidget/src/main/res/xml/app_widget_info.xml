@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:configure="uk.co.barbuzz.appwidget.configure.ConfigureActivity"
+    android:minHeight="@dimen/app_widget_min_height"
+    android:minResizeHeight="40dp"
+    android:minResizeWidth="@dimen/app_widget_min_resize_width"
+    android:minWidth="@dimen/app_widget_min_width"
+    android:previewImage="@drawable/appwidget_preview"
+    android:initialLayout="@layout/app_widget"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen"
+    android:updatePeriodMillis="0" />

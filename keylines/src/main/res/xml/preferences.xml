@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="@string/pref_title_baseline_grid">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:title="@string/pref_title_enabled"
+            android:key="@string/pref_key_baseline_grid_enabled" />
+        <PreferenceScreen
+            android:title="@string/pref_title_advanced"
+            android:dependency="@string/pref_key_baseline_grid_enabled" >
+            <ListPreference
+                android:defaultValue="@string/pref_value_opacity_default"
+                android:title="@string/pref_title_opacity"
+                android:summary="%s"
+                android:entries="@array/pref_names_opacity"
+                android:entryValues="@array/pref_values_opacity"
+                android:key="@string/pref_key_baseline_grid_opacity" />
+            <uk.co.barbuzz.keylines.ui.ColorListPreference
+                android:defaultValue="@color/pref_baseline_grid_default_color"
+                android:title="@string/pref_title_color"
+                custom:entries="@array/pref_names_color"
+                custom:entryValues="@array/pref_values_color"
+                android:key="@string/pref_key_baseline_grid_color" />
+            <ListPreference
+                android:defaultValue="@string/pref_value_size_small"
+                android:title="@string/pref_title_size"
+                android:summary="%s"
+                android:entries="@array/pref_names_size_small"
+                android:entryValues="@array/pref_values_size_small"
+                android:key="@string/pref_key_baseline_grid_size" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_title_increment_grid">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:title="@string/pref_title_enabled"
+            android:key="@string/pref_key_increment_grid_enabled" />
+        <PreferenceScreen
+            android:title="@string/pref_title_advanced"
+            android:dependency="@string/pref_key_increment_grid_enabled" >
+            <ListPreference
+                android:defaultValue="@string/pref_value_opacity_default"
+                android:title="@string/pref_title_opacity"
+                android:summary="%s"
+                android:entries="@array/pref_names_opacity"
+                android:entryValues="@array/pref_values_opacity"
+                android:key="@string/pref_key_increment_grid_opacity" />
+            <uk.co.barbuzz.keylines.ui.ColorListPreference
+                android:defaultValue="@color/pref_increment_grid_default_color"
+                android:title="@string/pref_title_color"
+                custom:entries="@array/pref_names_color"
+                custom:entryValues="@array/pref_values_color"
+                android:key="@string/pref_key_increment_grid_color" />
+            <ListPreference
+                android:defaultValue="@string/pref_value_size_medium"
+                android:title="@string/pref_title_size"
+                android:summary="%s"
+                android:entries="@array/pref_names_size_all"
+                android:entryValues="@array/pref_values_size_all"
+                android:key="@string/pref_key_increment_grid_size" />
+            <ListPreference
+                android:defaultValue="@string/pref_value_increment_size_auto"
+                android:title="@string/pref_title_increment_size"
+                android:summary="%s"
+                android:entries="@array/pref_names_increment_size"
+                android:entryValues="@array/pref_values_increment_size"
+                android:key="@string/pref_key_increment_grid_increment_size" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_title_typography_lines">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:title="@string/pref_title_enabled"
+            android:key="@string/pref_key_typography_lines_enabled" />
+        <PreferenceScreen
+            android:title="@string/pref_title_advanced"
+            android:dependency="@string/pref_key_typography_lines_enabled" >
+            <ListPreference
+                android:defaultValue="@string/pref_value_opacity_default"
+                android:title="@string/pref_title_opacity"
+                android:summary="%s"
+                android:entries="@array/pref_names_opacity"
+                android:entryValues="@array/pref_values_opacity"
+                android:key="@string/pref_key_typography_lines_opacity" />
+            <uk.co.barbuzz.keylines.ui.ColorListPreference
+                android:defaultValue="@color/pref_typography_lines_default_color"
+                android:title="@string/pref_title_color"
+                custom:entries="@array/pref_names_color"
+                custom:entryValues="@array/pref_values_color"
+                android:key="@string/pref_key_typography_lines_color" />
+            <ListPreference
+                android:defaultValue="@string/pref_value_size_small"
+                android:title="@string/pref_title_size"
+                android:summary="%s"
+                android:entries="@array/pref_names_size_small"
+                android:entryValues="@array/pref_values_size_small"
+                android:key="@string/pref_key_typography_lines_size" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_title_content_keylines">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:title="@string/pref_title_enabled"
+            android:key="@string/pref_key_content_keylines_enabled" />
+        <PreferenceScreen
+            android:title="@string/pref_title_advanced"
+            android:dependency="@string/pref_key_content_keylines_enabled" >
+            <ListPreference
+                android:defaultValue="@string/pref_value_opacity_default"
+                android:title="@string/pref_title_opacity"
+                android:summary="%s"
+                android:entries="@array/pref_names_opacity"
+                android:entryValues="@array/pref_values_opacity"
+                android:key="@string/pref_key_content_keylines_opacity" />
+            <uk.co.barbuzz.keylines.ui.ColorListPreference
+                android:defaultValue="@color/pref_content_keylines_default_color"
+                android:title="@string/pref_title_color"
+                custom:entries="@array/pref_names_color"
+                custom:entryValues="@array/pref_values_color"
+                android:key="@string/pref_key_content_keylines_color" />
+            <ListPreference
+                android:defaultValue="@string/pref_value_size_large"
+                android:title="@string/pref_title_size"
+                android:summary="%s"
+                android:entries="@array/pref_names_size_all"
+                android:entryValues="@array/pref_values_size_all"
+                android:key="@string/pref_key_content_keylines_size" />
+        </PreferenceScreen>
+    </PreferenceCategory>
+</PreferenceScreen>

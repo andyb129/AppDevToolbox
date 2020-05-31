@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="KeylineView">
+        <attr name="color" format="color" />
+        <attr name="opacity" format="float" />
+        <attr name="direction"/>
+    </declare-styleable>
+
+    <declare-styleable name="LineView">
+        <attr name="strokeWidthLv" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="RegularLineView">
+        <attr name="spacing" format="integer" />
+    </declare-styleable>
+
+    <attr name="direction" format="enum">
+        <enum name="vertical" value="0"/>
+        <enum name="horizontal" value="1"/>
+        <enum name="both" value="2"/>
+    </attr>
+
+    <declare-styleable name="ColorListPreference">
+        <attr name="entries" format="reference"/>
+        <attr name="entryValues" format="reference"/>
+    </declare-styleable>
+
+    <!--Ruler view-->
+    <attr name="min_value" format="integer" />
+    <attr name="max_value" format="integer" />
+    <attr name="interval_value" format="integer" />
+    <attr name="is_horizontal" format="boolean" />
+
+    <attr name="long_height_height_ratio" format="fraction" />
+    <attr name="short_height_height_ratio" format="fraction" />
+
+    <attr name="ruler_text_color" format="color" />
+    <attr name="ruler_text_size" format="dimension" />
+
+    <attr name="indicator_interval" format="dimension" />
+    <attr name="indicator_color" format="color" />
+    <attr name="indicator_width" format="dimension" />
+
+    <attr name="notch_color" format="color" />
+
+    <declare-styleable name="RulerView">
+        <attr name="min_value" />
+        <attr name="max_value" />
+        <attr name="interval_value" />
+        <attr name="is_horizontal" />
+
+        <attr name="long_height_height_ratio" />
+        <attr name="short_height_height_ratio" />
+
+        <attr name="ruler_text_color" />
+        <attr name="ruler_text_size" />
+
+        <attr name="indicator_interval" />
+        <attr name="indicator_color" />
+        <attr name="indicator_width" />
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true">
+
+    <uk.co.barbuzz.keylines.widget.RulerView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#7EFFEB3B"
+        app:interval_value="3"
+        app:ruler_text_color="#000000"
+        app:ruler_text_size="14sp"
+        app:indicator_color="#000000"
+        app:indicator_interval="8dp"
+        app:indicator_width="1dp"
+        app:long_height_height_ratio="60%"
+        app:short_height_height_ratio="40%"
+        app:is_horizontal="true"/>
+
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<resources>
+    <dimen name="status_bar_height">25dp</dimen>
+    <dimen name="preference_title_text_size">16sp</dimen>
+
+    <dimen name="material_baseline_grid_1x">8dp</dimen>
+    <dimen name="material_baseline_grid_05x">4dp</dimen>
+    <dimen name="material_increment_1x">56dp</dimen>
+    <dimen name="material_content_edge_margin_horizontal">24dp</dimen>
+    <dimen name="material_content_secondary_edge_margin_start">80dp</dimen>
+
+    <dimen name="spacing_8">8dp</dimen>
+
+</resources>

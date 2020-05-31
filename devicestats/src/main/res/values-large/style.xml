@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ViewSizeLabel" parent="@android:style/Widget.TextView">
+       	<item name="android:textAppearance">@android:style/TextAppearance.Large</item>
+    </style>
+</resources>

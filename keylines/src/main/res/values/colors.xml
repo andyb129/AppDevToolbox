@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pref_baseline_grid_default_color">@color/material_color_red_500</color>
+    <color name="pref_increment_grid_default_color">@color/material_color_blue_500</color>
+    <color name="pref_typography_lines_default_color">@color/material_color_red_500</color>
+    <color name="pref_content_keylines_default_color">@color/material_color_orange_500</color>
+
+    <color name="material_color_red_500">#F44336</color>
+    <color name="material_color_blue_500">#2196F3</color>
+    <color name="material_color_orange_500">#FF9800</color>
+    <color name="material_color_green_500">#4CAF50</color>
+    <color name="ruler_overlay_background">#FFEB3B</color>
+    <color name="ruler_overlay_lines">#000000</color>
+</resources>

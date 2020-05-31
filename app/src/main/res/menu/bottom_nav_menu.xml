@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_device_stats"
+        android:icon="@drawable/ic_aspect_ratio_black_24dp"
+        android:title="@string/title_device_stats" />
+
+    <item
+        android:id="@+id/navigation_keylines"
+        android:icon="@drawable/ic_grid_on_black_24dp"
+        android:title="@string/title_keylines" />
+
+    <item
+        android:id="@+id/navigation_app_widget"
+        android:icon="@drawable/ic_widgets_black_24dp"
+        android:title="@string/title_snippet" />
+
+    <item
+        android:id="@+id/navigation_dev_tiles"
+        android:icon="@drawable/ic_developer_board_black_24dp"
+        android:title="@string/title_dev_tiles_and_widget" />
+
+</menu>

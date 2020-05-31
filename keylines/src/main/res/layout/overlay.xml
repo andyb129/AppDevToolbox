@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <uk.co.barbuzz.keylines.widget.RegularLineView
+            android:id="@+id/baseline_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            custom:color="@color/material_color_red_500"
+            custom:spacing="@dimen/material_baseline_grid_1x"
+            custom:opacity="0.5"
+            custom:direction="both"
+            android:visibility="visible"/>
+
+        <uk.co.barbuzz.keylines.widget.RegularLineView
+            android:id="@+id/increment_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            custom:color="@color/material_color_blue_500"
+            custom:spacing="@dimen/material_increment_1x"
+            custom:opacity="1"
+            custom:strokeWidthLv="2"
+            custom:direction="both"
+            android:visibility="invisible"/>
+
+        <uk.co.barbuzz.keylines.widget.RegularLineView
+            android:id="@+id/typography_lines"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            custom:color="@color/material_color_red_500"
+            custom:spacing="@dimen/material_baseline_grid_05x"
+            custom:opacity="1"
+            custom:strokeWidthLv="1"
+            custom:direction="horizontal"
+            android:visibility="invisible"/>
+
+        <uk.co.barbuzz.keylines.widget.IrregularLineView
+            android:id="@+id/content_keylines"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            custom:color="@color/material_color_orange_500"
+            custom:opacity="1"
+            custom:strokeWidthLv="4"
+            custom:direction="vertical"/>
+    </FrameLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,37 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="uk.co.barbuzz.keylines" >
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application>
+        <service
+            android:name=".services.OverlayGridService"
+            android:exported="false" />
+
+        <service
+            android:name=".services.OverlayRulerHorizService"
+            android:exported="false" />
+
+        <service
+            android:name=".services.OverlayRulerVertService"
+            android:exported="false" />
+
+        <service
+            android:name=".services.OverlayDpLinesHorizService"
+            android:exported="false" />
+
+        <service
+            android:name=".services.OverlayDpLinesVertService"
+            android:exported="false" />
+
+        <receiver
+            android:name=".utils.ToggleReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="blue.aodev.materialkeylines.TOGGLE" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

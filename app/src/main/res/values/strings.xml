@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">App Dev Toolkit</string>
+    <string name="app_name">App Dev Toolbox</string>
     <string name="title_device_stats">Device Stats</string>
     <string name="title_keylines">Keylines</string>
     <string name="title_snippet">Snippet</string>

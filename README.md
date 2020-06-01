@@ -42,6 +42,16 @@ I've also tweeked a few parts (e.g. language button on widget) and added some ot
 * **Dev Tiles** by [mustafa01ali](https://github.com/mustafa01ali) - [https://github.com/mustafa01ali/Dev-Tiles](https://github.com/mustafa01ali/Dev-Tiles)
 * **Snippet** by Me! :smile: [andyb129](https://github.com/andyb129) - [https://github.com/andyb129/Snippet](https://github.com/mustafa01ali/Snippet)
 
+### PERMISSIONS
+
+To use the DEV TILES part of the app remember to launch these ADB shell commands to allow the app to access the dev settings
+
+```
+adb shell pm grant uk.co.barbuzz.appdevtoolbox android.permission.WRITE_SECURE_SETTINGS
+
+adb shell pm grant uk.co.barbuzz.appdevtoolbox android.permission.DUMP
+```
+
 ### TODO
 
 1. This is my first attempt at this and I hope to improve it over time.

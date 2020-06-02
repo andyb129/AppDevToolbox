@@ -59,7 +59,7 @@ adb shell pm grant uk.co.barbuzz.appdevtoolbox android.permission.DUMP
 
 ### Licence
 ```
-Copyright (c) 2017 Andy Barber
+Copyright (c) 2020 Andy Barber
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

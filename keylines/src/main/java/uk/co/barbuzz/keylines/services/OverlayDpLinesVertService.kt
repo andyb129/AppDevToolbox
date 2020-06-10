@@ -1,6 +1,11 @@
 package uk.co.barbuzz.keylines.services
 
-import android.app.*
+import android.R.attr.button
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.graphics.PixelFormat
@@ -8,12 +13,18 @@ import android.os.Binder
 import android.os.Build
 import android.os.IBinder
 import android.util.DisplayMetrics
-import android.view.*
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
 import android.view.View.OnTouchListener
+import android.view.WindowManager
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import uk.co.barbuzz.keylines.R
+import uk.co.barbuzz.keylines.utils.RepeatListener
 
 
 class OverlayDpLinesVertService : Service() {
@@ -23,6 +34,7 @@ class OverlayDpLinesVertService : Service() {
     private lateinit var viewDpLinesVertical: View
     private lateinit var viewDpLinesButtons: View
     private lateinit var buttonText: TextView
+    private lateinit var spaceGuidlineLayout: RelativeLayout
     private lateinit var spaceGuidlineVert: View
     private lateinit var leftGuideline: View
     private lateinit var rightGuideline: View
@@ -83,6 +95,7 @@ class OverlayDpLinesVertService : Service() {
 
         leftGuideline = viewDpLinesVertical.findViewById<View>(R.id.top_guideline_vert)
         rightGuideline = viewDpLinesVertical.findViewById<View>(R.id.bottom_guideline_vert)
+        spaceGuidlineLayout = viewDpLinesVertical.findViewById<RelativeLayout>(R.id.space_guideline_vert_layout)
         spaceGuidlineVert = viewDpLinesVertical.findViewById<View>(R.id.space_guideline_vert)
         arrowLeft = viewDpLinesVertical.findViewById<ImageView>(R.id.arrow_left_guideline_vert)
         arrowRight = viewDpLinesVertical.findViewById<ImageView>(R.id.arrow_right_guideline_vert)
@@ -135,20 +148,13 @@ class OverlayDpLinesVertService : Service() {
     private fun showDpLinesButton() {
         viewDpLinesButtons = LayoutInflater.from(this).inflate(R.layout.overlay_dplines_buttons, null)
 
-        val plusButton = viewDpLinesButtons.findViewById<ImageView>(R.id.plus_button)
-        plusButton.setOnClickListener{
+        viewDpLinesButtons.findViewById<ImageView>(R.id.plus_button).setOnTouchListener(RepeatListener(100, 50, View.OnClickListener {
             increaseDpLinesSpacing()
-        }
-        plusButton.setOnLongClickListener {
-            /*while (dpLinesSpacing < screenWidth) {
-                increaseDpLinesSpacing()
-            }*/
-            true
-        }
+        }))
 
-        viewDpLinesButtons.findViewById<ImageView>(R.id.minus_button).setOnClickListener{
+        viewDpLinesButtons.findViewById<ImageView>(R.id.minus_button).setOnTouchListener(RepeatListener(100, 50, View.OnClickListener {
             decreaseDpLinesSpacing()
-        }
+        }))
 
         viewDpLinesButtons.findViewById<ImageView>(R.id.up_button).setOnClickListener{
             moveLabelUp()
@@ -209,6 +215,9 @@ class OverlayDpLinesVertService : Service() {
         spaceGuidlineVert.setBackgroundColor(dpLinesVertColour)
         leftGuideline.setBackgroundColor(dpLinesVertColour)
         rightGuideline.setBackgroundColor(dpLinesVertColour)
+        arrowLeft.setColorFilter(dpLinesVertColour)
+        arrowRight.setColorFilter(dpLinesVertColour)
+        spaceText.setTextColor(dpLinesVertColour)
     }
 
     private fun increaseDpLinesSpacing() {
@@ -243,8 +252,6 @@ class OverlayDpLinesVertService : Service() {
 
     private fun moveLabelUp() {
         val layoutParamsSpace = getSpaceLayoutParam()
-        val layoutParamsArrowLeft = getLeftArrowLayoutParam()
-        val layoutParamsArrowRight = getRightArrowLayoutParam()
         val layoutParamsText = getTextLayoutParam()
 
         var bias = 0.1f
@@ -253,19 +260,13 @@ class OverlayDpLinesVertService : Service() {
         }
         spaceBias = bias
         layoutParamsSpace.verticalBias = bias
-        layoutParamsArrowLeft.verticalBias = bias
-        layoutParamsArrowRight.verticalBias = bias
         layoutParamsText.verticalBias = bias
-        spaceGuidlineVert.layoutParams = layoutParamsSpace
-        arrowLeft.layoutParams = layoutParamsArrowLeft
-        arrowRight.layoutParams = layoutParamsArrowRight
+        spaceGuidlineLayout.layoutParams = layoutParamsSpace
         spaceText.layoutParams = layoutParamsText
     }
 
     private fun moveLabelDown() {
         val layoutParamsSpace = getSpaceLayoutParam()
-        val layoutParamsArrowLeft = getLeftArrowLayoutParam()
-        val layoutParamsArrowRight = getRightArrowLayoutParam()
         val layoutParamsText = getTextLayoutParam()
 
         var bias = 0.9f
@@ -274,12 +275,8 @@ class OverlayDpLinesVertService : Service() {
         }
         spaceBias = bias
         layoutParamsSpace.verticalBias = bias
-        layoutParamsArrowLeft.verticalBias = bias
-        layoutParamsArrowRight.verticalBias = bias
         layoutParamsText.verticalBias = bias
-        spaceGuidlineVert.layoutParams = layoutParamsSpace
-        arrowLeft.layoutParams = layoutParamsArrowLeft
-        arrowRight.layoutParams = layoutParamsArrowRight
+        spaceGuidlineLayout.layoutParams = layoutParamsSpace
         spaceText.layoutParams = layoutParamsText
     }
 
@@ -287,13 +284,13 @@ class OverlayDpLinesVertService : Service() {
         spaceText.text = "${dpLinesSpacing}dp"
         val layoutParamsSpace = getSpaceLayoutParam()
         layoutParamsSpace.verticalBias = spaceBias
-        spaceGuidlineVert.layoutParams = layoutParamsSpace
+        spaceGuidlineLayout.layoutParams = layoutParamsSpace
     }
 
     private fun getSpaceLayoutParam(): ConstraintLayout.LayoutParams {
         val layoutParamsSpace = ConstraintLayout.LayoutParams(
             dpLinesSpacing.px,
-            2.px
+            ConstraintLayout.LayoutParams.WRAP_CONTENT
         )
         layoutParamsSpace.topToTop = ConstraintLayout.LayoutParams.PARENT_ID
         layoutParamsSpace.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
@@ -310,28 +307,6 @@ class OverlayDpLinesVertService : Service() {
         layoutParamsText.startToEnd = R.id.bottom_guideline_vert
         layoutParamsText.setMargins(16.dp, 0, 0, 0)
         return layoutParamsText
-    }
-
-    private fun getRightArrowLayoutParam(): ConstraintLayout.LayoutParams {
-        val layoutParamsArrowLRight = ConstraintLayout.LayoutParams(
-            ConstraintLayout.LayoutParams.WRAP_CONTENT,
-            ConstraintLayout.LayoutParams.WRAP_CONTENT
-        )
-        layoutParamsArrowLRight.topToTop = ConstraintLayout.LayoutParams.PARENT_ID
-        layoutParamsArrowLRight.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
-        layoutParamsArrowLRight.endToStart = R.id.bottom_guideline_vert
-        return layoutParamsArrowLRight
-    }
-
-    private fun getLeftArrowLayoutParam(): ConstraintLayout.LayoutParams {
-        val layoutParamsArrowLeft = ConstraintLayout.LayoutParams(
-            ConstraintLayout.LayoutParams.WRAP_CONTENT,
-            ConstraintLayout.LayoutParams.WRAP_CONTENT
-        )
-        layoutParamsArrowLeft.topToTop = ConstraintLayout.LayoutParams.PARENT_ID
-        layoutParamsArrowLeft.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
-        layoutParamsArrowLeft.startToEnd = R.id.top_guideline_vert
-        return layoutParamsArrowLeft
     }
 
     private fun readPreferences() {

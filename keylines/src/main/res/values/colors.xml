@@ -12,4 +12,6 @@
     <color name="ruler_overlay_background">#FFEB3B</color>
     <color name="ruler_overlay_lines">#000000</color>
     <color name="dp_lines_default_colour">#FFEB3B</color>
+    <color name="overlay_button">#33A5A5A5</color>
+    <color name="overlay_button_pressed">#33605F5F</color>
 </resources>

@@ -10,12 +10,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Switch
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.skydoves.colorpickerview.ColorEnvelope
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import uk.co.barbuzz.keylines.R
 import uk.co.barbuzz.keylines.services.*
+import uk.co.barbuzz.keylines.utils.ColorUtil.getColor
 
 
 class KeylineFragment : Fragment() {
@@ -134,6 +136,12 @@ class KeylineFragment : Fragment() {
 
     private fun setDpLinesColourSquares() {
         val overlayPref = OverlayPreference(activity!!)
+        if (overlayPref.getDpLinesHorizColour() == 0) {
+            overlayPref.setDpLinesHorizColour(ContextCompat.getColor(activity!!, R.color.dp_lines_default_colour))
+        }
+        if (overlayPref.getDpLinesVertColour() == 0) {
+            overlayPref.setDpLinesVertColour(ContextCompat.getColor(activity!!, R.color.dp_lines_default_colour))
+        }
         dplinesHorizColourSelector.setBackgroundColor(overlayPref.getDpLinesHorizColour())
         dplinesVertColourSelector.setBackgroundColor(overlayPref.getDpLinesVertColour())
     }
@@ -142,14 +150,18 @@ class KeylineFragment : Fragment() {
         val overlayPref = OverlayPreference(activity!!)
         overlayPref.setDpLinesVertColour(envelope?.color ?: 0)
         dplinesVertColourSelector.setBackgroundColor(envelope?.color ?: 0)
-        activity?.startService(OverlayDpLinesVertService.getUpdateIntent(activity!!))
+        if (OverlayDpLinesVertService.isRunning) {
+            activity?.startService(OverlayDpLinesVertService.getUpdateIntent(activity!!))
+        }
     }
 
     private fun setDpLinesHorizColour(envelope: ColorEnvelope?) {
         val overlayPref = OverlayPreference(activity!!)
         overlayPref.setDpLinesHorizColour(envelope?.color ?: 0)
         dplinesHorizColourSelector.setBackgroundColor(envelope?.color ?: 0)
-        activity?.startService(OverlayDpLinesHorizService.getUpdateIntent(activity!!))
+        if (OverlayDpLinesHorizService.isRunning) {
+            activity?.startService(OverlayDpLinesHorizService.getUpdateIntent(activity!!))
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

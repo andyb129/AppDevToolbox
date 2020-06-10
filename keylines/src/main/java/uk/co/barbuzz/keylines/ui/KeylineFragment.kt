@@ -1,5 +1,6 @@
 package uk.co.barbuzz.keylines.ui
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -10,8 +11,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Switch
 import androidx.fragment.app.Fragment
+import com.skydoves.colorpickerview.ColorEnvelope
+import com.skydoves.colorpickerview.ColorPickerDialog
+import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import uk.co.barbuzz.keylines.R
 import uk.co.barbuzz.keylines.services.*
+
 
 class KeylineFragment : Fragment() {
 
@@ -20,6 +25,8 @@ class KeylineFragment : Fragment() {
     private lateinit var rulerVertToggleSwitch: Switch
     private lateinit var dplinesHorizToggleSwitch: Switch
     private lateinit var dplinesVertToggleSwitch: Switch
+    private lateinit var dplinesHorizColourSelector: View
+    private lateinit var dplinesVertColourSelector: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +41,28 @@ class KeylineFragment : Fragment() {
 
         checkToggles()
 
+        setupKeylineTools(view)
+    }
+
+    private fun checkToggles() {
+        if (OverlayDpLinesHorizService.isRunning && dplinesHorizToggleSwitch.isChecked) {
+            dplinesHorizToggleSwitch.toggle()
+        }
+        if (OverlayDpLinesVertService.isRunning && dplinesVertToggleSwitch.isChecked) {
+            dplinesVertToggleSwitch.toggle()
+        }
+        if (OverlayRulerHorizService.isRunning && rulerHorizToggleSwitch.isChecked) {
+            rulerHorizToggleSwitch.toggle()
+        }
+        if (OverlayRulerVertService.isRunning && rulerVertToggleSwitch.isChecked) {
+            rulerVertToggleSwitch.toggle()
+        }
+        if (OverlayGridService.isRunning && keylineToggleSwitch.isChecked) {
+            keylineToggleSwitch.toggle()
+        }
+    }
+
+    private fun setupKeylineTools(view: View) {
         dplinesHorizToggleSwitch = view.findViewById(R.id.dplines_horiz_switch)
         dplinesHorizToggleSwitch.setOnClickListener {
             if (OverlayDpLinesHorizService.isRunning) {
@@ -43,6 +72,16 @@ class KeylineFragment : Fragment() {
             }
         }
 
+        dplinesHorizColourSelector = view.findViewById(R.id.dplines_horiz_colour)
+        dplinesHorizColourSelector.setOnClickListener {
+            ColorPickerDialog.Builder(activity, AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                .setTitle("Dp Lines Colour")
+                .setPreferenceName("DpColourPicker")
+                .setPositiveButton(getString(R.string.confirm), ColorEnvelopeListener { envelope, fromUser -> setDpLinesHorizColour(envelope) })
+                .setNegativeButton(getString(R.string.cancel)) { dialogInterface, i -> dialogInterface.dismiss() }
+                .show()
+        }
+
         dplinesVertToggleSwitch = view.findViewById(R.id.dplines_vert_switch)
         dplinesVertToggleSwitch.setOnClickListener {
             if (OverlayDpLinesVertService.isRunning) {
@@ -50,6 +89,16 @@ class KeylineFragment : Fragment() {
             } else {
                 startOverlayService(OverlayDpLinesVertService::class.java)
             }
+        }
+
+        dplinesVertColourSelector = view.findViewById(R.id.dplines_vert_colour)
+        dplinesVertColourSelector.setOnClickListener {
+            ColorPickerDialog.Builder(activity, AlertDialog.THEME_DEVICE_DEFAULT_DARK)
+                .setTitle("Dp Lines Colour")
+                .setPreferenceName("DpColourPicker")
+                .setPositiveButton(getString(R.string.confirm), ColorEnvelopeListener { envelope, fromUser -> setDpLinesVertColour(envelope) })
+                .setNegativeButton(getString(R.string.cancel)) { dialogInterface, i -> dialogInterface.dismiss() }
+                .show()
         }
 
         rulerHorizToggleSwitch = view.findViewById(R.id.ruler_horiz_switch)
@@ -70,6 +119,7 @@ class KeylineFragment : Fragment() {
             }
         }
 
+
         keylineToggleSwitch = view.findViewById(R.id.action_switch)
         keylineToggleSwitch.setOnClickListener {
             if (OverlayGridService.isRunning) {
@@ -78,24 +128,28 @@ class KeylineFragment : Fragment() {
                 startOverlayService(OverlayGridService::class.java)
             }
         }
+
+        setDpLinesColourSquares()
     }
 
-    private fun checkToggles() {
-        if (OverlayDpLinesHorizService.isRunning && dplinesHorizToggleSwitch.isChecked) {
-            dplinesHorizToggleSwitch.toggle()
-        }
-        if (OverlayDpLinesVertService.isRunning && dplinesVertToggleSwitch.isChecked) {
-            dplinesVertToggleSwitch.toggle()
-        }
-        if (OverlayRulerHorizService.isRunning && rulerHorizToggleSwitch.isChecked) {
-            rulerHorizToggleSwitch.toggle()
-        }
-        if (OverlayRulerVertService.isRunning && rulerVertToggleSwitch.isChecked) {
-            rulerVertToggleSwitch.toggle()
-        }
-        if (OverlayGridService.isRunning && keylineToggleSwitch.isChecked) {
-            keylineToggleSwitch.toggle()
-        }
+    private fun setDpLinesColourSquares() {
+        val overlayPref = OverlayPreference(activity!!)
+        dplinesHorizColourSelector.setBackgroundColor(overlayPref.getDpLinesHorizColour())
+        dplinesVertColourSelector.setBackgroundColor(overlayPref.getDpLinesVertColour())
+    }
+
+    private fun setDpLinesVertColour(envelope: ColorEnvelope?) {
+        val overlayPref = OverlayPreference(activity!!)
+        overlayPref.setDpLinesVertColour(envelope?.color ?: 0)
+        dplinesVertColourSelector.setBackgroundColor(envelope?.color ?: 0)
+        activity?.startService(OverlayDpLinesVertService.getUpdateIntent(activity!!))
+    }
+
+    private fun setDpLinesHorizColour(envelope: ColorEnvelope?) {
+        val overlayPref = OverlayPreference(activity!!)
+        overlayPref.setDpLinesHorizColour(envelope?.color ?: 0)
+        dplinesHorizColourSelector.setBackgroundColor(envelope?.color ?: 0)
+        activity?.startService(OverlayDpLinesHorizService.getUpdateIntent(activity!!))
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

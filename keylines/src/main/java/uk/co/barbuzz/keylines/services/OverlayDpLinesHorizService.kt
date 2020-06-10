@@ -24,6 +24,8 @@ class OverlayDpLinesHorizService : Service() {
     private lateinit var viewDpLinesButtons: View
     private lateinit var buttonText: TextView
     private lateinit var spaceGuidline: View
+    private lateinit var topGuideline: View
+    private lateinit var bottomGuideline: View
     private lateinit var spaceGuidlineLayout: View
     private lateinit var arrowTop: ImageView
     private lateinit var arrowBottom: ImageView
@@ -61,7 +63,7 @@ class OverlayDpLinesHorizService : Service() {
 
             isRunning = true
         } else if (intent.hasExtra(UPDATE_EXTRA)) {
-            //readPreferences()
+            setDpLinesColour()
         } else if (intent?.action == CANCEL_EXTRA) {
             stopSelf()
         }
@@ -80,13 +82,16 @@ class OverlayDpLinesHorizService : Service() {
 
         viewDpLinesHorizontal = LayoutInflater.from(this).inflate(R.layout.overlay_dplines_horizontal, null)
 
+        topGuideline = viewDpLinesHorizontal.findViewById<View>(R.id.top_guideline)
+        bottomGuideline = viewDpLinesHorizontal.findViewById<View>(R.id.bottom_guideline)
         spaceGuidlineLayout = viewDpLinesHorizontal.findViewById<View>(R.id.space_guideline_layout)
         spaceGuidline = viewDpLinesHorizontal.findViewById<View>(R.id.space_guideline)
         arrowTop = viewDpLinesHorizontal.findViewById<ImageView>(R.id.arrow_top_guideline)
         arrowBottom = viewDpLinesHorizontal.findViewById<ImageView>(R.id.arrow_bottom_guideline)
         spaceText = viewDpLinesHorizontal.findViewById<TextView>(R.id.space_text_guideline)
 
-        readPreferences()
+        setDpLinesColour()
+
         layoutFlag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
         } else {
@@ -147,7 +152,7 @@ class OverlayDpLinesHorizService : Service() {
         viewDpLinesButtons.findViewById<ImageView>(R.id.down_button).setOnClickListener{
             moveLabelDown()
         }
-        viewDpLinesButtons.findViewById<TextView>(R.id.button_label).text = "Horizontal"
+        viewDpLinesButtons.findViewById<TextView>(R.id.button_label).text = getString(R.string.db_line_horiz_buttons_label)
 
         readPreferences()
         layoutFlag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -155,7 +160,7 @@ class OverlayDpLinesHorizService : Service() {
         } else {
             WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY
         }
-        val x = screenWidth - viewDpLinesButtons.width
+        val x = screenWidth/2 * -1
         val y = screenHeight - (viewDpLinesButtons.height + (viewDpLinesButtons.height/2))
         val params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.WRAP_CONTENT,
@@ -194,8 +199,15 @@ class OverlayDpLinesHorizService : Service() {
         })
     }
 
+    private fun setDpLinesColour() {
+        val dpLinesHorizColour = OverlayPreference(this).getDpLinesHorizColour()
+        spaceGuidline.setBackgroundColor(dpLinesHorizColour)
+        topGuideline.setBackgroundColor(dpLinesHorizColour)
+        bottomGuideline.setBackgroundColor(dpLinesHorizColour)
+    }
+
     private fun increaseDpLinesSpacing() {
-        val newSpacing = dpLinesSpacing + 8
+        val newSpacing = dpLinesSpacing + 1
         if (newSpacing < screenWidth) {
             dpLinesSpacing = newSpacing
         }
@@ -210,7 +222,7 @@ class OverlayDpLinesHorizService : Service() {
     }
 
     private fun decreaseDpLinesSpacing() {
-        val newSpacing = dpLinesSpacing - 8
+        val newSpacing = dpLinesSpacing - 1
         if (newSpacing > 0) {
             dpLinesSpacing = newSpacing
         }

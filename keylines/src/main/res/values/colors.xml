@@ -11,4 +11,5 @@
     <color name="material_color_green_500">#4CAF50</color>
     <color name="ruler_overlay_background">#FFEB3B</color>
     <color name="ruler_overlay_lines">#000000</color>
+    <color name="dp_lines_default_colour">#FFEB3B</color>
 </resources>

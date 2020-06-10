@@ -24,6 +24,8 @@ class OverlayDpLinesVertService : Service() {
     private lateinit var viewDpLinesButtons: View
     private lateinit var buttonText: TextView
     private lateinit var spaceGuidlineVert: View
+    private lateinit var leftGuideline: View
+    private lateinit var rightGuideline: View
     private lateinit var arrowLeft: ImageView
     private lateinit var arrowRight: ImageView
     private lateinit var spaceText: TextView
@@ -60,7 +62,7 @@ class OverlayDpLinesVertService : Service() {
 
             isRunning = true
         } else if (intent.hasExtra(UPDATE_EXTRA)) {
-            //readPreferences()
+            setDpLinesColour()
         } else if (intent?.action == CANCEL_EXTRA) {
             stopSelf()
         }
@@ -79,12 +81,15 @@ class OverlayDpLinesVertService : Service() {
 
         viewDpLinesVertical = LayoutInflater.from(this).inflate(R.layout.overlay_dplines_vertical, null)
 
+        leftGuideline = viewDpLinesVertical.findViewById<View>(R.id.top_guideline_vert)
+        rightGuideline = viewDpLinesVertical.findViewById<View>(R.id.bottom_guideline_vert)
         spaceGuidlineVert = viewDpLinesVertical.findViewById<View>(R.id.space_guideline_vert)
         arrowLeft = viewDpLinesVertical.findViewById<ImageView>(R.id.arrow_left_guideline_vert)
         arrowRight = viewDpLinesVertical.findViewById<ImageView>(R.id.arrow_right_guideline_vert)
         spaceText = viewDpLinesVertical.findViewById<TextView>(R.id.space_text_guideline_vert)
 
-        readPreferences()
+        setDpLinesColour()
+
         layoutFlag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
         } else {
@@ -130,8 +135,15 @@ class OverlayDpLinesVertService : Service() {
     private fun showDpLinesButton() {
         viewDpLinesButtons = LayoutInflater.from(this).inflate(R.layout.overlay_dplines_buttons, null)
 
-        viewDpLinesButtons.findViewById<ImageView>(R.id.plus_button).setOnClickListener{
+        val plusButton = viewDpLinesButtons.findViewById<ImageView>(R.id.plus_button)
+        plusButton.setOnClickListener{
             increaseDpLinesSpacing()
+        }
+        plusButton.setOnLongClickListener {
+            /*while (dpLinesSpacing < screenWidth) {
+                increaseDpLinesSpacing()
+            }*/
+            true
         }
 
         viewDpLinesButtons.findViewById<ImageView>(R.id.minus_button).setOnClickListener{
@@ -145,7 +157,7 @@ class OverlayDpLinesVertService : Service() {
         viewDpLinesButtons.findViewById<ImageView>(R.id.down_button).setOnClickListener{
             moveLabelDown()
         }
-        viewDpLinesButtons.findViewById<TextView>(R.id.button_label).text = "Vertical"
+        viewDpLinesButtons.findViewById<TextView>(R.id.button_label).text = getString(R.string.db_line_vert_buttons_label)
 
         readPreferences()
         layoutFlag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -192,8 +204,15 @@ class OverlayDpLinesVertService : Service() {
         })
     }
 
+    private fun setDpLinesColour() {
+        val dpLinesVertColour = OverlayPreference(this).getDpLinesVertColour()
+        spaceGuidlineVert.setBackgroundColor(dpLinesVertColour)
+        leftGuideline.setBackgroundColor(dpLinesVertColour)
+        rightGuideline.setBackgroundColor(dpLinesVertColour)
+    }
+
     private fun increaseDpLinesSpacing() {
-        val newSpacing = dpLinesSpacing + 8
+        val newSpacing = dpLinesSpacing + 1
         if (newSpacing < screenWidth) {
             dpLinesSpacing = newSpacing
         }
@@ -208,7 +227,7 @@ class OverlayDpLinesVertService : Service() {
     }
 
     private fun decreaseDpLinesSpacing() {
-        val newSpacing = dpLinesSpacing - 8
+        val newSpacing = dpLinesSpacing - 1
         if (newSpacing > 0) {
             dpLinesSpacing = newSpacing
         }

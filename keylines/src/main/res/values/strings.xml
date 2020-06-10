@@ -116,9 +116,17 @@
         <item>64dp (tablet)</item>
     </string-array>
     <string translatable="false" name="pref_key_increment_grid_increment_size">increment_grid_increment_size</string>
+
     <string name="ruler_horiz_label">Ruler horizontal</string>
     <string name="ruler_vert_label">Ruler vertical</string>
     <string name="dplines_horiz_label">Dp Lines horizontal</string>
     <string name="dplines_vert_label">Dp Lines vertical</string>
+    <string name="db_line_horiz_buttons_label">Horizontal Dp \nAdjust</string>
+    <string name="db_line_vert_buttons_label">Vertical Dp \nAdjust</string>
+    <string name="overlay_help_text">Drag all overlays below to move them</string>
+    <string name="confirm">ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="pref_dp_lines_horiz_colour">pref_dp_lines_horiz_colour</string>
+    <string name="pref_dp_lines_vert_colour">pref_dp_lines_vert_colour</string>
 
 </resources>

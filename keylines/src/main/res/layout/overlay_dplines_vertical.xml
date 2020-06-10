@@ -12,15 +12,15 @@
         android:id="@+id/top_guideline_vert"
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:background="#FFEB3B"
+        android:background="@color/dp_lines_default_colour"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <View
         android:id="@+id/space_guideline_vert"
-        android:layout_width="50dp"
+        android:layout_width="8dp"
         android:layout_height="2dp"
-        android:background="#FFEB3B"
+        android:background="@color/dp_lines_default_colour"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.5"
@@ -52,7 +52,7 @@
         android:id="@+id/bottom_guideline_vert"
         android:layout_width="1dp"
         android:layout_height="match_parent"
-        android:background="#FFEB3B"
+        android:background="@color/dp_lines_default_colour"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/space_guideline_vert"/>
 

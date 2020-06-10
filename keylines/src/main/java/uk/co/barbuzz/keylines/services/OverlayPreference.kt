@@ -162,6 +162,28 @@ class OverlayPreference(private val context: Context) {
         view.spacing = size
     }
 
+    fun setDpLinesHorizColour(colour: Int) {
+        with (preferences.edit()) {
+            putInt(context.getString(R.string.pref_dp_lines_horiz_colour), colour)
+            commit()
+        }
+    }
+
+    fun getDpLinesHorizColour(): Int {
+        return preferences.getInt(context.getString(R.string.pref_dp_lines_horiz_colour), 0) ?: 0
+    }
+
+    fun setDpLinesVertColour(colour: Int) {
+        with (preferences.edit()) {
+            putInt(context.getString(R.string.pref_dp_lines_vert_colour), colour)
+            commit()
+        }
+    }
+
+    fun getDpLinesVertColour(): Int {
+        return preferences.getInt(context.getString(R.string.pref_dp_lines_vert_colour), 0) ?: 0
+    }
+
     companion object {
         private fun setVisible(view: View, visible: Boolean) {
             val visibility = if (visible) View.VISIBLE else View.INVISIBLE

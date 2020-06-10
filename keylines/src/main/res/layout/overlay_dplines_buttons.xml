@@ -8,22 +8,21 @@
     android:clickable="true"
     android:focusable="true">
 
-    <!-- TODO Finish these up/down buttons -->
     <ImageView
         android:id="@+id/up_button"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="8dp"
         android:src="@drawable/ic_arrow_up_black_24dp"
         android:background="#33A5A5A5"
-        android:visibility="invisible"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/plus_button"/>
+        app:layout_constraintStart_toEndOf="@+id/plus_button"
+        app:layout_constraintEnd_toStartOf="@+id/minus_button"/>
 
     <ImageView
         android:id="@+id/plus_button"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:layout_marginStart="8dp"
         android:src="@drawable/ic_add_black_24dp"
         android:background="#33A5A5A5"
         app:layout_constraintTop_toBottomOf="@+id/up_button"
@@ -33,12 +32,13 @@
         android:id="@+id/button_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        tools:text="Horizontal"
+        tools:text="Horizontal Dp \nAdjust"
         app:layout_constraintTop_toBottomOf="@+id/up_button"
-        app:layout_constraintStart_toEndOf="@+id/plus_button"
-        app:layout_constraintEnd_toStartOf="@+id/minus_button"/>
+        app:layout_constraintBottom_toTopOf="@+id/down_button"
+        app:layout_constraintStart_toEndOf="@+id/plus_button" />
 
     <ImageView
         android:id="@+id/minus_button"
@@ -48,7 +48,7 @@
         android:src="@drawable/ic_remove_black_24dp"
         android:background="#33A5A5A5"
         app:layout_constraintTop_toBottomOf="@+id/up_button"
-        app:layout_constraintStart_toEndOf="@+id/up_button"/>
+        app:layout_constraintStart_toEndOf="@+id/button_label"/>
 
     <ImageView
         android:id="@+id/down_button"
@@ -57,8 +57,8 @@
         android:layout_marginStart="8dp"
         android:src="@drawable/ic_arrow_down_black_24dp"
         android:background="#33A5A5A5"
-        android:visibility="invisible"
         app:layout_constraintTop_toBottomOf="@+id/plus_button"
-        app:layout_constraintStart_toEndOf="@+id/plus_button"/>
+        app:layout_constraintStart_toEndOf="@+id/plus_button"
+        app:layout_constraintEnd_toStartOf="@+id/minus_button"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,12 @@
 
         <activity android:name=".ui.SnippetActivity" />
 
+        <receiver android:name=".service.AutoStartSnippetBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
         <service
             android:name=".service.SnippetTextAccessibilityService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">

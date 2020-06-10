@@ -1,4 +1,4 @@
-# AppDevToolkit
+# AppDevToolbox
 
 A collection of tools for Android app development in one place.
 
@@ -35,12 +35,22 @@ This app brings together the following amazing Android development apps into one
 
 I've also tweeked a few parts (e.g. language button on widget) and added some other features.
 
-* **Device Stats** by [scottyab](https://github.com/scottyab) - [https://github.com/scottyab/android-device-stats](https://github.com/scottyab/android-device-stats)
-* **Material Keylines** by [esnaultdev](https://github.com/esnaultdev) - [https://github.com/esnaultdev/MaterialKeylines](https://github.com/esnaultdev/MaterialKeylines)
-* **Venom** by [YarikSOffice](https://github.com/YarikSOffice) - [https://github.com/YarikSOffice/venom](https://github.com/YarikSOffice/venom)
-* **Dev Widget** by [tasomaniac](https://github.com/tasomaniac) - [https://github.com/tasomaniac/DevWidget](https://github.com/tasomaniac/DevWidget)
-* **Dev Tiles** by [mustafa01ali](https://github.com/mustafa01ali) - [https://github.com/mustafa01ali/Dev-Tiles](https://github.com/mustafa01ali/Dev-Tiles)
-* **Snippet** by Me! :smile: [andyb129](https://github.com/andyb129) - [https://github.com/andyb129/Snippet](https://github.com/mustafa01ali/Snippet)
+* **Device Stats** (device info) by [scottyab](https://github.com/scottyab) - [https://github.com/scottyab/android-device-stats](https://github.com/scottyab/android-device-stats)
+* **Material Keylines** (layout overlay) by [esnaultdev](https://github.com/esnaultdev) - [https://github.com/esnaultdev/MaterialKeylines](https://github.com/esnaultdev/MaterialKeylines)
+* **Venom** (process killer) by [YarikSOffice](https://github.com/YarikSOffice) - [https://github.com/YarikSOffice/venom](https://github.com/YarikSOffice/venom)
+* **Dev Widget** (app widget) by [tasomaniac](https://github.com/tasomaniac) - [https://github.com/tasomaniac/DevWidget](https://github.com/tasomaniac/DevWidget)
+* **Dev Tiles** (notification tiles for dev settings) by [mustafa01ali](https://github.com/mustafa01ali) - [https://github.com/mustafa01ali/Dev-Tiles](https://github.com/mustafa01ali/Dev-Tiles)
+* **Snippet** (quick text pasting) by Me! :smile: [andyb129](https://github.com/andyb129) - [https://github.com/andyb129/Snippet](https://github.com/andyb129/Snippet)
+
+### PERMISSIONS
+
+To use the DEV TILES part of the app remember to launch these ADB shell commands to allow the app to access the dev settings
+
+```
+adb shell pm grant uk.co.barbuzz.appdevtoolbox android.permission.WRITE_SECURE_SETTINGS
+
+adb shell pm grant uk.co.barbuzz.appdevtoolbox android.permission.DUMP
+```
 
 ### TODO
 
@@ -49,7 +59,7 @@ I've also tweeked a few parts (e.g. language button on widget) and added some ot
 
 ### Licence
 ```
-Copyright (c) 2017 Andy Barber
+Copyright (c) 2020 Andy Barber
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

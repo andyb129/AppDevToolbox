@@ -51,28 +51,29 @@ class SnippetTextAccessibilityService: AccessibilityService() {
         if (rootInActiveWindow != null) {
             if (accessibilityEvent.eventType == TYPE_VIEW_TEXT_CHANGED) {
                 for (snippet in allSnippets) {
-                    val text = accessibilityEvent.text[0]
-                    val snippetList: List<String> = text.split("\\s".toRegex())
-                    val line = snippetList[snippetList.lastIndex]
+                    if (accessibilityEvent.text.size > 0) {
+                        val text = accessibilityEvent.text[0]
+                        val snippetList: List<String> = text.split("\\s".toRegex())
+                        val line = snippetList[snippetList.lastIndex]
 
-                    //TODO - work out how to get the line the cursor is on
+                        //TODO - work out how to get the line the cursor is on
 
-                    //if abbreviation found in EditText LAST WORD then show paste overlay
-                    if (line == snippet.abbreviation) {
-                        pasteText = snippet.snippet
+                        //if abbreviation found in EditText LAST WORD then show paste overlay
+                        if (line == snippet.abbreviation) {
+                            pasteText = snippet.snippet
 
-                        editTextAccessibilityNodeInfo = accessibilityEvent.source
-                        val rect = Rect()
-                        editTextAccessibilityNodeInfo.getBoundsInScreen(rect)
-                        val prefs = OverlaySnippetPastePreference(this)
-                        prefs.setPastTextCoordinates(Pair(rect.left, rect.top))
-                        prefs.setPasteText(pasteText)
+                            editTextAccessibilityNodeInfo = accessibilityEvent.source
+                            val rect = Rect()
+                            editTextAccessibilityNodeInfo.getBoundsInScreen(rect)
+                            val prefs = OverlaySnippetPastePreference(this)
+                            prefs.setPastTextCoordinates(Pair(rect.left, rect.top))
+                            prefs.setPasteText(pasteText)
 
-                        //this shows the overlay so user can paste the text
-                        startService(Intent(this, OverlaySnippetPasteService::class.java))
-                        break
+                            //this shows the overlay so user can paste the text
+                            startService(Intent(this, OverlaySnippetPasteService::class.java))
+                            break
+                        }
                     }
-
                 }
             }
         }

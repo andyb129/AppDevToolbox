@@ -12,18 +12,20 @@ class TilesWidgetAdapter(
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> DevTilesFragment()
+            0 -> DeepLInkTesterFragment()
+            1 -> DevTilesFragment()
             else -> AppWidgetFragment()
         }
     }
 
     override fun getCount(): Int {
-        return 2
+        return 3
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
-            0 -> "Dev Tiles"
+            0 -> "Deep Link Tester"
+            1 -> "Dev Tiles"
             else -> "Other"
         }
     }

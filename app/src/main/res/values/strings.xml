@@ -19,4 +19,10 @@
     <string name="accessibility_setting_button">Go to accessibility settings</string>
     <string name="complete_setting_button">Go to app</string>
     <string name="permission_success_message">Thanks! App is all setup and ready to use.</string>
+    <string name="deep_link_url">Deep Link URL:</string>
+    <string name="deep_link_uri_hint">Deep link URI</string>
+    <string name="deep_link_uri_button">Launch</string>
+    <string name="deep_link_blank_error">Please enter a deep link</string>
+    <string name="deep_link_no_activity_for_intent_error">No Activity found to handle intent</string>
+    <string name="deep_link_clear_button">clear</string>
 </resources>

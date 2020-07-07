@@ -1,6 +1,7 @@
 package uk.co.barbuzz.keylines.ui
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -9,6 +10,7 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Switch
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -41,25 +43,29 @@ class KeylineFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        checkToggles()
+        val inputMethodManager = activity?.getSystemService( Context.INPUT_METHOD_SERVICE ) as InputMethodManager
+        if( inputMethodManager.isAcceptingText )
+            inputMethodManager.hideSoftInputFromWindow( activity?.currentFocus?.windowToken,0)
 
         setupKeylineTools(view)
+
+        checkToggles()
     }
 
     private fun checkToggles() {
-        if (OverlayDpLinesHorizService.isRunning && dplinesHorizToggleSwitch.isChecked) {
+        if (OverlayDpLinesHorizService.isRunning && !dplinesHorizToggleSwitch.isChecked) {
             dplinesHorizToggleSwitch.toggle()
         }
-        if (OverlayDpLinesVertService.isRunning && dplinesVertToggleSwitch.isChecked) {
+        if (OverlayDpLinesVertService.isRunning && !dplinesVertToggleSwitch.isChecked) {
             dplinesVertToggleSwitch.toggle()
         }
-        if (OverlayRulerHorizService.isRunning && rulerHorizToggleSwitch.isChecked) {
+        if (OverlayRulerHorizService.isRunning && !rulerHorizToggleSwitch.isChecked) {
             rulerHorizToggleSwitch.toggle()
         }
-        if (OverlayRulerVertService.isRunning && rulerVertToggleSwitch.isChecked) {
+        if (OverlayRulerVertService.isRunning && !rulerVertToggleSwitch.isChecked) {
             rulerVertToggleSwitch.toggle()
         }
-        if (OverlayGridService.isRunning && keylineToggleSwitch.isChecked) {
+        if (OverlayGridService.isRunning && !keylineToggleSwitch.isChecked) {
             keylineToggleSwitch.toggle()
         }
     }

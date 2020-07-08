@@ -12,7 +12,9 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import uk.co.barbuzz.keylines.R
+import uk.co.barbuzz.keylines.ui.KeylineFragment.Companion.SERVICE_STOPPED_INTENT_FILTER
 import uk.co.barbuzz.keylines.widget.IrregularLineView
 import uk.co.barbuzz.keylines.widget.RegularLineView
 
@@ -48,6 +50,7 @@ class OverlayGridService : Service() {
             readPreferences()
         } else if (intent?.action == CANCEL_EXTRA) {
             stopSelf()
+            LocalBroadcastManager.getInstance(this).sendBroadcast(Intent(SERVICE_STOPPED_INTENT_FILTER))
         }
         return super.onStartCommand(intent, flags, startId)
     }

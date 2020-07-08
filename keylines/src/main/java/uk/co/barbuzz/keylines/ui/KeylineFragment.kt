@@ -1,8 +1,10 @@
 package uk.co.barbuzz.keylines.ui
 
 import android.app.AlertDialog
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -14,12 +16,17 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Switch
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.skydoves.colorpickerview.ColorEnvelope
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import uk.co.barbuzz.keylines.R
-import uk.co.barbuzz.keylines.services.*
-import uk.co.barbuzz.keylines.utils.ColorUtil.getColor
+import uk.co.barbuzz.keylines.services.OverlayDpLinesHorizService
+import uk.co.barbuzz.keylines.services.OverlayDpLinesVertService
+import uk.co.barbuzz.keylines.services.OverlayGridService
+import uk.co.barbuzz.keylines.services.OverlayPreference
+import uk.co.barbuzz.keylines.services.OverlayRulerHorizService
+import uk.co.barbuzz.keylines.services.OverlayRulerVertService
 
 
 class KeylineFragment : Fragment() {
@@ -31,6 +38,12 @@ class KeylineFragment : Fragment() {
     private lateinit var dplinesVertToggleSwitch: Switch
     private lateinit var dplinesHorizColourSelector: View
     private lateinit var dplinesVertColourSelector: View
+
+    private val receiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent) {
+            checkToggles()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,23 +62,50 @@ class KeylineFragment : Fragment() {
 
         setupKeylineTools(view)
 
+        setupBroadcastReceiver()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
         checkToggles()
     }
 
+    override fun onDestroy() {
+        LocalBroadcastManager.getInstance(activity!!).unregisterReceiver(receiver);
+        super.onDestroy()
+    }
+
+    /*override fun onReceive(p0: Context?, p1: Intent?) {
+
+    }*/
+
+    private fun setupBroadcastReceiver() {
+        LocalBroadcastManager.getInstance(activity!!).registerReceiver(
+            receiver,
+            IntentFilter(SERVICE_STOPPED_INTENT_FILTER)
+        );
+    }
+
     private fun checkToggles() {
-        if (OverlayDpLinesHorizService.isRunning && !dplinesHorizToggleSwitch.isChecked) {
+        if (!OverlayDpLinesHorizService.isRunning && dplinesHorizToggleSwitch.isChecked ||
+            OverlayDpLinesHorizService.isRunning && !dplinesHorizToggleSwitch.isChecked) {
             dplinesHorizToggleSwitch.toggle()
         }
-        if (OverlayDpLinesVertService.isRunning && !dplinesVertToggleSwitch.isChecked) {
+        if (!OverlayDpLinesVertService.isRunning && dplinesVertToggleSwitch.isChecked ||
+            OverlayDpLinesVertService.isRunning && !dplinesVertToggleSwitch.isChecked) {
             dplinesVertToggleSwitch.toggle()
         }
-        if (OverlayRulerHorizService.isRunning && !rulerHorizToggleSwitch.isChecked) {
+        if (!OverlayRulerHorizService.isRunning && rulerHorizToggleSwitch.isChecked ||
+            OverlayRulerHorizService.isRunning && !rulerHorizToggleSwitch.isChecked) {
             rulerHorizToggleSwitch.toggle()
         }
-        if (OverlayRulerVertService.isRunning && !rulerVertToggleSwitch.isChecked) {
+        if (!OverlayRulerVertService.isRunning && rulerVertToggleSwitch.isChecked ||
+            OverlayRulerVertService.isRunning && !rulerVertToggleSwitch.isChecked) {
             rulerVertToggleSwitch.toggle()
         }
-        if (OverlayGridService.isRunning && !keylineToggleSwitch.isChecked) {
+        if (!OverlayGridService.isRunning && keylineToggleSwitch.isChecked ||
+            OverlayGridService.isRunning && !keylineToggleSwitch.isChecked) {
             keylineToggleSwitch.toggle()
         }
     }
@@ -195,5 +235,7 @@ class KeylineFragment : Fragment() {
 
     companion object {
         private const val MANAGE_OVERLAY_REQUEST_CODE = 2
+        const val SERVICE_STOPPED_INTENT_FILTER = "KeylineServiceStopped"
     }
+
 }

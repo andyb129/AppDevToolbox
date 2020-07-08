@@ -9,7 +9,9 @@ import android.os.Build
 import android.os.IBinder
 import android.view.*
 import android.view.View.OnTouchListener
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import uk.co.barbuzz.keylines.R
+import uk.co.barbuzz.keylines.ui.KeylineFragment.Companion.SERVICE_STOPPED_INTENT_FILTER
 
 
 class OverlayRulerHorizService : Service() {
@@ -44,6 +46,7 @@ class OverlayRulerHorizService : Service() {
             //readPreferences()
         } else if (intent?.action == CANCEL_EXTRA) {
             stopSelf()
+            LocalBroadcastManager.getInstance(this).sendBroadcast(Intent(SERVICE_STOPPED_INTENT_FILTER))
         }
         return super.onStartCommand(intent, flags, startId)
     }
@@ -58,16 +61,14 @@ class OverlayRulerHorizService : Service() {
         layoutFlag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
         } else {
-            WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY
+            WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
         }
         val params = WindowManager.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 0, 0,
                 layoutFlag,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
-                        WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or
-                        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
                 PixelFormat.TRANSLUCENT)
         windowManager.addView(viewRulerHorizontal, params)
     }
@@ -85,9 +86,7 @@ class OverlayRulerHorizService : Service() {
                     WindowManager.LayoutParams.WRAP_CONTENT,
                     x, y,
                     layoutFlag,
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
-                            WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or
-                            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
                     PixelFormat.TRANSLUCENT
                 )
                 params.gravity = Gravity.TOP or Gravity.LEFT

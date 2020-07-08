@@ -1,6 +1,5 @@
 package uk.co.barbuzz.keylines.services
 
-import android.R.attr.button
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -23,7 +22,9 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import uk.co.barbuzz.keylines.R
+import uk.co.barbuzz.keylines.ui.KeylineFragment.Companion.SERVICE_STOPPED_INTENT_FILTER
 import uk.co.barbuzz.keylines.utils.RepeatListener
 
 
@@ -77,6 +78,7 @@ class OverlayDpLinesVertService : Service() {
             setDpLinesColour()
         } else if (intent?.action == CANCEL_EXTRA) {
             stopSelf()
+            LocalBroadcastManager.getInstance(this).sendBroadcast(Intent(SERVICE_STOPPED_INTENT_FILTER))
         }
         return super.onStartCommand(intent, flags, startId)
     }
@@ -106,16 +108,14 @@ class OverlayDpLinesVertService : Service() {
         layoutFlag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
         } else {
-            WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY
+            WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
         }
         val params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.MATCH_PARENT,
             0, 0,
             layoutFlag,
-            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
-                    WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or
-                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             PixelFormat.TRANSLUCENT)
         windowManager.addView(viewDpLinesVertical, params)
     }
@@ -132,9 +132,7 @@ class OverlayDpLinesVertService : Service() {
                     WindowManager.LayoutParams.MATCH_PARENT,
                     x, y,
                     layoutFlag,
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
-                            WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or
-                            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
                     PixelFormat.TRANSLUCENT
                 )
                 params.gravity = Gravity.TOP or Gravity.LEFT
@@ -169,18 +167,16 @@ class OverlayDpLinesVertService : Service() {
         layoutFlag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
         } else {
-            WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY
+            WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
         }
         val x = screenWidth - viewDpLinesButtons.width
         val y = screenHeight - (viewDpLinesButtons.height + (viewDpLinesButtons.height/2))
         val params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.WRAP_CONTENT,
-            WindowManager.LayoutParams.WRAP_CONTENT,
+            WindowManager.LayoutParams.MATCH_PARENT,
             x, y,
             layoutFlag,
-            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
-                    WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or
-                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             PixelFormat.TRANSLUCENT)
         windowManager.addView(viewDpLinesButtons, params)
     }
@@ -197,9 +193,7 @@ class OverlayDpLinesVertService : Service() {
                     WindowManager.LayoutParams.WRAP_CONTENT,
                     x, y,
                     layoutFlag,
-                    WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or
-                            WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH or
-                            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
                     PixelFormat.TRANSLUCENT
                 )
                 params.gravity = Gravity.TOP or Gravity.LEFT

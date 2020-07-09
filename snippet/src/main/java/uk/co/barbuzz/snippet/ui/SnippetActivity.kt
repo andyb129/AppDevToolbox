@@ -1,7 +1,6 @@
 package uk.co.barbuzz.snippet.ui
 
 import android.app.Activity
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -57,7 +56,7 @@ class SnippetActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
+        menuInflater.inflate(R.menu.menu_snippet, menu)
         if (snippetToEdit == null) menu?.findItem(R.id.action_delete)?.isVisible = false
         return true
     }

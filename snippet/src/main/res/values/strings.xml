@@ -6,6 +6,7 @@
     <string name="button_save">Save</string>
     <string name="not_saved">Snippet not saved.</string>
     <string name="add_snippet">Add snippet</string>
+    <string name="db_not_restored">Database not restored</string>
 
     <string name="pref_key_paste_text_overlay_x_coord">paste_text_overlay_x_coord</string>
     <string name="pref_key_paste_text_overlay_y_coord">paste_text_overlay_y_coord</string>
@@ -20,7 +21,11 @@
 
     <string name="empty_list_text">No Snippets at the moment. \n\nClick the plus button below to add one.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_backup">backup snippets</string>
+    <string name="action_restore">restore database</string>
+    <string name="db_restored">Database restored</string>
+    <string name="db_backup_success">Database backed up to - %1$s \n\n Open file location?</string>
+    <string name="db_backup_fail">Database backup failed!</string>
+    <string name="alert_dialog_backup_title">Database Backup</string>
 
 </resources>

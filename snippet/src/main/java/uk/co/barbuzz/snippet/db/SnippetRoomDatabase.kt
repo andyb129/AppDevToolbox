@@ -14,6 +14,8 @@ abstract class SnippetRoomDatabase : RoomDatabase() {
     abstract fun snippetDao(): SnippetDao
 
     companion object {
+        const val DATABASE_NAME = "snippet_database"
+
         @Volatile
         private var INSTANCE: SnippetRoomDatabase? = null
 
@@ -25,7 +27,7 @@ abstract class SnippetRoomDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     SnippetRoomDatabase::class.java,
-                    "snippet_database"
+                    DATABASE_NAME
                 )
                 .fallbackToDestructiveMigration()
                 .addCallback(
